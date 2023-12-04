@@ -1,1 +1,2 @@
-Create static lib and shared lib use Makefile
+BT1. Tạo static lib sử dụng Makefile
+BT2. Tạo shared lib sử dụng Makefile
