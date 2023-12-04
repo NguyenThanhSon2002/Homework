@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    printf("File name             : %s\n", file_path);
+    printf("File name: %s\n", file_path);
     printf("File type: ");
     if(S_ISREG(fb.st_mode)){
         printf("file mode: Regular file\n");

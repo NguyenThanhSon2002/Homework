@@ -14,14 +14,12 @@ int main() {
         return 0;
     }
 
-// Write some data to the end of the file
     char data[] = "Hello world\n";
-    lseek(fd,0,SEEK_SET);
+    lseek(fd, 0, SEEK_SET);
     if (write(fd, data, strlen(data)) == -1) {
         printf("Can not write \n");
     }
     
-// Close the file
     close(fd);
 
     return 0;
