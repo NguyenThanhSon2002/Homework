@@ -25,13 +25,6 @@ int main(int argc, char const *argv[])
         printf("producer message: %s", buff);
         close(fd);
 
-        // Write first
-        //printf("Message to producer: "); fflush(stdin);       
-        //fgets(buff, BUFF_SIZE, stdin);
-
-        //fd = open(FIFO_FILE, O_WRONLY);
-        //write(fd, buff, strlen(buff) +1);
-        //close(fd);
     }
 
     return 0;

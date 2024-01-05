@@ -26,12 +26,6 @@ int main(int argc, char const *argv[])
         write(fd, buff, strlen(buff) +1);
         close(fd);
 
-        // Read responding message
-        //fd = open(FIFO_FILE, O_RDONLY);
-        //read(fd, buff, BUFF_SIZE);
-
-        //printf("comsumer respone: %s", buff);
-        //close(fd);
     }
 
     return 0;
