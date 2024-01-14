@@ -10,7 +10,6 @@
 
 int main(int argc, char const *argv[])
 {
-    /* code */
     pid_t child_pid;
     char *data = mmap(0, 1, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
     if (data == MAP_FAILED)
@@ -21,14 +20,14 @@ int main(int argc, char const *argv[])
 
     child_pid = fork();         
     if (child_pid >= 0) {
-        if (0 == child_pid) {       /* Process con */
+        if (0 == child_pid) {       
             printf("Child started, value = %c\n", ++(*data));
             if (munmap(data, sizeof(int)) == -1)
             {
                printf("munmap fail\n");
             }
             exit(EXIT_SUCCESS);
-        } else {                    /* Process cha */
+        } else {                   
             wait(NULL);
 
             printf("In parent, value = %c\n", *data);
@@ -39,7 +38,7 @@ int main(int argc, char const *argv[])
             exit(EXIT_SUCCESS);
         }
     } else {
-        printf("fork() unsuccessfully\n");      // fork() return -1 nếu lỗi.
+        printf("fork() unsuccessfully\n");      
     }
 
     return 0;
