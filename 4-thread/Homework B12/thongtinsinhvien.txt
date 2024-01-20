@@ -1,10 +1,6 @@
-Name - DateOfBirth - Born: son
- - 8/9/2002
- - yenbai
- 
-Name - DateOfBirth - Born: son
- - 8/9/2002
- - yenbai
+Name - DateOfBirth - Born: 1
+ - 1
+ - 1
  
 Name - DateOfBirth - Born: 1
  - 1

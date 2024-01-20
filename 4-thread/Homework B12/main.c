@@ -22,9 +22,9 @@ pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 // Nhap thong tin sinh vien
 static void *thr_handle1(void *args)
 {
-    printf("I'm thread_id1\n");
-
+    pthread_mutex_lock(&lock1);
     while (1) {
+        printf("I'm thread_id1\n");
         infor *SinhVien = (infor*)args;
 
         printf("Nhap ho ten sinh vien: \n");
@@ -45,7 +45,6 @@ static void *thr_handle1(void *args)
 
 static void *thr_handle2(void *args) 
 {
-
     pthread_mutex_lock(&lock1);
     // Cho phep thread 1 nhap thong tin
     pthread_cond_wait(&cond, &lock1);
@@ -82,26 +81,23 @@ static void *thr_handle2(void *args)
     pthread_mutex_unlock(&lock1);
 }
 
-static void *thr_handle3(void *args) {
+static void *thr_handle3(void *args) 
+{
+    while (1) {
+        pthread_mutex_lock(&lock1);
 
-    pthread_mutex_lock(&lock1);
+        printf("I'm thread_id3\n");
 
-    pthread_cond_wait(&cond, &lock1);
+        infor *SinhVien = (infor*)args;
+        char buff[300];
 
-    printf("I'm thread_id3\n");
+        sprintf(buff, "Name - DateOfBirth - Born: %s - %s - %s \n", SinhVien->Name, SinhVien->DateOfBirth, SinhVien->Born);
+        printf("%s", buff);
 
-    int fd = open("thongtinsinhvien.txt", O_CREAT | O_RDWR | O_APPEND | 0100);
-    infor *SinhVien = (infor*)args;
-    char buff[300];
-
-    sprintf(buff, "Name - DateOfBirth - Born: %s - %s - %s \n", SinhVien->Name, SinhVien->DateOfBirth, SinhVien->Born);
-    printf("%s", buff);
-
-    close(fd);
-
-    pthread_cond_signal(&cond);
-    pthread_mutex_unlock(&lock1);
-    pthread_exit(NULL);
+        pthread_cond_signal(&cond);
+        pthread_mutex_unlock(&lock1);
+        pthread_exit(NULL);
+    }
 }
 
 int main(int argc, char const *argv[])
